@@ -8,8 +8,6 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-  pull_request:
-    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -37,7 +35,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - uses: oven-sh/setup-bun@v1
-      - run: ls
       - run: bun install
       - name: Setup Pages
         uses: actions/configure-pages@v3
@@ -49,7 +46,6 @@ jobs:
           static_site_generator: next
       - name: Build with Next.js
         run: bun run build
-      - run: ls -a
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
