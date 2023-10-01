@@ -4,7 +4,6 @@ import remarkGfm from 'remark-gfm';
 import rehypePrettyCode from 'rehype-pretty-code';
 
 const rehypeOptions = {
-  theme: 'slack-dark',
   keepBackground: true,
 };
 
@@ -24,10 +23,6 @@ export const Post = defineDocumentType(() => ({
       required: true,
     },
   },
-  mdx: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [[rehypePrettyCode, rehypeOptions]],
-  },
   computedFields: {
     url: {
       type: 'string',
@@ -36,4 +31,11 @@ export const Post = defineDocumentType(() => ({
   },
 }));
 
-export default makeSource({ contentDirPath: 'posts', documentTypes: [Post] });
+export default makeSource({
+  contentDirPath: 'posts',
+  documentTypes: [Post],
+  mdx: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [[rehypePrettyCode, rehypeOptions]],
+  },
+});
