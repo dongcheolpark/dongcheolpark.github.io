@@ -1,0 +1,5 @@
+Feature:
+  - blog/src/**
+
+Post:
+  - blog/posts/**
