@@ -30,13 +30,15 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./blog
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           path: blog
       - uses: oven-sh/setup-bun@v1
-      - run: ls
       - run: bun install
       - name: Setup Pages
         uses: actions/configure-pages@v3
