@@ -33,6 +33,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          path: blog
       - uses: oven-sh/setup-bun@v1
       - run: cd blog
       - run: bun install
