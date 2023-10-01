@@ -1,5 +1,12 @@
 // contentlayer.config.ts
-import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import remarkGfm from 'remark-gfm';
+import rehypePrettyCode from 'rehype-pretty-code';
+
+const rehypeOptions = {
+  theme: 'slack-dark',
+  keepBackground: true,
+};
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -17,9 +24,16 @@ export const Post = defineDocumentType(() => ({
       required: true,
     },
   },
-  computedFields: {
-    url: { type: 'string', resolve: (post) => `/posts/${post._raw.flattenedPath}` },
+  mdx: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [[rehypePrettyCode, rehypeOptions]],
   },
-}))
+  computedFields: {
+    url: {
+      type: 'string',
+      resolve: (post) => `/posts/${post._raw.flattenedPath}`,
+    },
+  },
+}));
 
-export default makeSource({ contentDirPath: 'posts', documentTypes: [Post] })
+export default makeSource({ contentDirPath: 'posts', documentTypes: [Post] });

@@ -15,7 +15,10 @@
     "next-contentlayer": "^0.3.4",
     "prettier": "^3.0.3",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "rehype-pretty-code": "^0.10.1",
+    "remark-gfm": "^4.0.0",
+    "shiki": "^0.14.4"
   },
   "devDependencies": {
     "typescript": "latest",
