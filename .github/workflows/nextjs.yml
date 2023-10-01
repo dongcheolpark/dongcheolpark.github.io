@@ -36,7 +36,6 @@ jobs:
         with:
           path: blog
       - uses: oven-sh/setup-bun@v1
-      - run: cd blog
       - run: bun install
       - name: Setup Pages
         uses: actions/configure-pages@v3
