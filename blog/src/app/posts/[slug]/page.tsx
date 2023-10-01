@@ -1,21 +1,22 @@
-import { format, parseISO } from 'date-fns'
-import { allPosts } from 'contentlayer/generated'
-import { getMDXComponent } from 'next-contentlayer/hooks'
+import { format, parseISO } from 'date-fns';
+import { allPosts } from 'contentlayer/generated';
+import { getMDXComponent } from 'next-contentlayer/hooks';
 
-export const generateStaticParams = async () => allPosts.map((post) => ({ slug: post._raw.flattenedPath }))
+export const generateStaticParams = async () =>
+  allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
 
-export const generateMetadata = ({ params }: {params: {slug: string}}) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug)
-  return { title: post?.title }
-}
+export const generateMetadata = ({ params }: { params: { slug: string } }) => {
+  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+  return { title: post?.title };
+};
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug)
-	if(!post) {
-	return null;
-	}
+  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+  if (!post) {
+    return null;
+  }
 
-  const Content = getMDXComponent(post.body.code)
+  const Content = getMDXComponent(post.body.code);
 
   return (
     <article className="py-8 mx-auto max-w-xl">
@@ -27,7 +28,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
       </div>
       <Content />
     </article>
-  )
-}
+  );
+};
 
-export default PostLayout
+export default PostLayout;
