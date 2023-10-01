@@ -12,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body className="px-5 sm:px-8">{children}</body>
     </html>
   );
 }

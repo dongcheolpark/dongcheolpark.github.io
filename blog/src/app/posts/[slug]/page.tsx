@@ -31,7 +31,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   const Content = getMDXComponent(post.body.code);
 
   return (
-    <article className="prose py-8 mx-auto max-w-xl">
+    <article className="prose py-8 mx-auto">
       <div className="mb-8 text-center">
         <time dateTime={post.date} className="mb-1 text-xs text-gray-600">
           {format(parseISO(post.date), 'LLLL d, yyyy')}
