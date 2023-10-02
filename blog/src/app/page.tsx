@@ -1,4 +1,5 @@
 // app/page.tsx
+import './page.scss';
 import Link from 'next/link';
 import { compareDesc, format, parseISO } from 'date-fns';
 import { allPosts, Post } from 'contentlayer/generated';
@@ -6,21 +7,19 @@ import { getMDXComponent } from 'next-contentlayer/hooks';
 
 function PostCard(post: Post) {
   return (
-    <div className="mb-8">
-      <h2 className="text-xl">
-        <Link
-          href={post.url}
-          className="text-blue-700 hover:text-blue-900"
-          legacyBehavior
-        >
-          {post.title}
-        </Link>
-      </h2>
-      <time dateTime={post.date} className="block mb-2 text-xs text-gray-600">
-        {format(parseISO(post.date), 'LLLL d, yyyy')}
-      </time>
-      <div className="text-sm">{post.description}</div>
-    </div>
+    <Link
+      href={post.url}
+      className="text-blue-700 hover:text-blue-900"
+      legacyBehavior
+    >
+      <div className="mb-8 postCard">
+        <h2 className="text-xl">{post.title}</h2>
+        <time dateTime={post.date} className="block mb-2 text-xs text-gray-600">
+          {format(parseISO(post.date), 'LLLL d, yyyy')}
+        </time>
+        <div className="text-sm">{post.description}</div>
+      </div>
+    </Link>
   );
 }
 
@@ -31,9 +30,12 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-xl py-8">
-      <h1 className="mb-8 text-center text-2xl font-black">
-        Next.js + Contentlayer Example
-      </h1>
+      <div className="ml-4 mb-8 flex items-end gap-2">
+        <h2 className="text-2xl font-bold tracking-tight md:text-4xl">
+          All Posts
+        </h2>
+        <span className="font-bold">({posts.length})</span>
+      </div>
       {posts.map((post, idx) => (
         <PostCard key={idx} {...post} />
       ))}
