@@ -1,5 +1,5 @@
 import './styles/global.scss';
-import './styles/_global.css'
+import './styles/_global.css';
 import './layout.scss';
 import type { Metadata } from 'next';
 export const metadata: Metadata = {
