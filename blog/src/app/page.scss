@@ -1,9 +1,11 @@
 @import '@/app/styles/variables.scss';
+
 .postCard {
-  padding: 16px;
+  border: 1px solid $primaryGrayColor;
+  border-radius: 10px;
+  padding: 24px 20px;
   &:hover {
     cursor: pointer;
-    border-radius: 10px;
     box-shadow: 2px 4px 16px $secondaryGrayColor;
     transform: scale(1.01, 1.01);
     transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
