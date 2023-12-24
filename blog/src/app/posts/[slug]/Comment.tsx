@@ -9,12 +9,13 @@ export default function Comment() {
       repoId="R_kgDOKFhvaA"
       category="General"
       categoryId="DIC_kwDOKFhvaM4Cb9rV"
-      mapping="specific"
+      mapping="pathname"
       reactionsEnabled="1"
       emitMetadata="0"
-      inputPosition="bottom"
+      inputPosition="top"
       theme="light"
       lang="ko"
+      loading="lazy"
     ></Giscus>
   );
 }

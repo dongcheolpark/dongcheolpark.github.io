@@ -22,7 +22,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   const Content = getMDXComponent(post.body.code);
 
   return (
-    <article className="prose py-8 mx-auto">
+    <article className="prose py-8 mb-8 mx-auto">
       <div className="headerBox mb-8 text-center">
         <div className="flex items-center justify-center gap-1 text-xs mb-1">
           <svg
@@ -65,6 +65,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         <h1>{post.title}</h1>
       </div>
       <Content />
+      <hr />
       <Comment />
     </article>
   );
