@@ -37,7 +37,7 @@ export default function Home() {
         <p>
           평소에 생각하고 고민했던 내용들을 공유합니다.
           <br />
-          최근에는 코드 리뷰, 타입 시스템에 관심을 가지고 있습니다.
+          최근에는 코드 리뷰, 타입 시스템에 관심이 많습니다.
         </p>
       </div>
       <div className="mb-8 flex items-end gap-2">
