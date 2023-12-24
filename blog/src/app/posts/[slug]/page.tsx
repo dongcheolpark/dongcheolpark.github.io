@@ -3,6 +3,7 @@ import { format, parseISO } from 'date-fns';
 import { allPosts } from 'contentlayer/generated';
 import { getMDXComponent } from 'next-contentlayer/hooks';
 import readingTime from 'reading-time';
+import Comment from './Comment';
 
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
@@ -64,6 +65,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         <h1>{post.title}</h1>
       </div>
       <Content />
+      <Comment />
     </article>
   );
 };
