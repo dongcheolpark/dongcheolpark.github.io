@@ -3,7 +3,7 @@ import './styles/_global.css';
 import './layout.scss';
 import type { Metadata } from 'next';
 export const metadata: Metadata = {
-  title: "donngcheolpark's blog",
+  title: "dongcheolpark's blog",
   description: 'technical blog by donngcheolpark',
 };
 
