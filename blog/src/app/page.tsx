@@ -1,18 +1,13 @@
 // app/page.tsx
-import './page.scss';
-import Link from 'next/link';
 import { compareDesc, format, parseISO } from 'date-fns';
 import { allPosts, Post } from 'contentlayer/generated';
-import { getMDXComponent } from 'next-contentlayer/hooks';
 import { EmailIcon, GithubIcon, MdiLinkedin } from './components/icons';
+
+import './page.scss';
 
 function PostCard(post: Post) {
   return (
-    <Link
-      href={post.url}
-      className="text-blue-700 hover:text-blue-900"
-      legacyBehavior
-    >
+    <a href={post.url} className="text-blue-700 hover:text-blue-900">
       <div className="mb-8 postCard">
         <h2 className="text-xl">{post.title}</h2>
         <time dateTime={post.date} className="block mb-2 text-xs text-gray-600">
@@ -20,7 +15,7 @@ function PostCard(post: Post) {
         </time>
         <div className="text-sm">{post.description}</div>
       </div>
-    </Link>
+    </a>
   );
 }
 
