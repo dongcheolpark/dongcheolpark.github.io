@@ -27,6 +27,13 @@ const config: Config = {
                 fontFamily: 'monaco',
               },
             },
+            code: {
+              backgroundColor: '#f2f2f2',
+              color: theme('colors.primaryColor') + ' !important',
+              borderRadius: '6px',
+              padding: '2px 3.5px',
+              fontFamily: 'Noto Sans KR, monaco',
+            },
             strong: {
               color: theme('colors.primaryColor'),
             },
