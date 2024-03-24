@@ -8,8 +8,8 @@ import './page.scss';
 function PostCard(post: Post) {
   return (
     <a href={post.url} className="text-blue-700 hover:text-blue-900">
-      <div className="mb-8 postCard">
-        <h2 className="text-xl">{post.title}</h2>
+      <div className="mb-4 postCard">
+        <h2 className="text-xl font-bold">{post.title}</h2>
         <time dateTime={post.date} className="block mb-2 text-xs text-gray-600">
           {format(parseISO(post.date), 'LLLL d, yyyy')}
         </time>
