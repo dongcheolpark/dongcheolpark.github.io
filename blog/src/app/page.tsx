@@ -31,9 +31,7 @@ export default function Home() {
           🛠️dongcheolpark&#39;s blog
         </h1>
         <p>
-          평소에 생각하고 고민했던 내용들을 공유합니다.
-          <br />
-          최근에는 코드 리뷰, 타입 시스템에 관심이 많습니다.
+          고민했던 내용들을 적습니다.
         </p>
         <div className="link-box">
           <a href="mailto:dongcheolpark02@gmail.com">
