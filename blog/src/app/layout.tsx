@@ -4,7 +4,7 @@ import './layout.scss';
 import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "dongcheolpark's blog",
-  description: 'technical blog by donngcheolpark',
+  description: '박동철의 기술 블로그',
 };
 
 export default function RootLayout({
@@ -17,9 +17,10 @@ export default function RootLayout({
       <body>
         <nav className="mainNav px-5 sm:px-12">
           <div className="innerWrapper ">
-            <a href="/">
+            <a href="/blog/">
               <strong className="logo">Blog</strong>
             </a>
+            <a href="/">포트폴리오</a>
             <a href="https://github.com/dongcheolpark" target="_blank">
               <div className="githubLogo">
                 <svg viewBox="0 0 16 16" className="w-5 h-5" fill="#868686">

@@ -1,8 +1,4 @@
-# Sample workflow for building and deploying a Next.js site to GitHub Pages
-#
-# To get started with Next.js see: https://nextjs.org/docs/getting-started
-#
-name: Deploy Next.js site to Pages
+name: Deploy portfolio and blog to Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -33,23 +29,28 @@ jobs:
         working-directory: ./blog
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - uses: oven-sh/setup-bun@v1
-      - run: bun install
+        uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.4
+      - run: bun install --frozen-lockfile
       - name: Setup Pages
-        uses: actions/configure-pages@v3
-        with:
-          # Automatically inject basePath in your Next.js configuration file and disable
-          # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
-          #
-          # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: next
-      - name: Build with Next.js
+        uses: actions/configure-pages@v5
+      - name: Build blog
         run: bun run build
+      - name: Build portfolio
+        working-directory: ./portfolio
+        run: npm run build -- "$RUNNER_TEMP/portfolio"
+      - name: Assemble portfolio and blog
+        working-directory: .
+        run: bash scripts/assemble-pages.sh blog/out "$RUNNER_TEMP/portfolio" "$RUNNER_TEMP/pages"
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: blog/out
+          path: ${{ runner.temp }}/pages
 
   # Deployment job
   deploy:
@@ -61,4 +62,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
