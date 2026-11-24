@@ -43,7 +43,9 @@ jobs:
         run: bun run build
       - name: Build portfolio
         working-directory: ./portfolio
-        run: npm run build -- "$RUNNER_TEMP/portfolio"
+        run: |
+          bun install --frozen-lockfile
+          bun run build "$RUNNER_TEMP/portfolio"
       - name: Assemble portfolio and blog
         working-directory: .
         run: bash scripts/assemble-pages.sh blog/out "$RUNNER_TEMP/portfolio" "$RUNNER_TEMP/pages"

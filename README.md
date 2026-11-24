@@ -4,7 +4,7 @@
 
 | 앱 | 소스 | GitHub Pages 경로 |
 | --- | --- | --- |
-| 포트폴리오 | `portfolio/` | `/`, `/work/<slug>/` |
+| 포트폴리오 (React) | `portfolio/` | `/`, `/work/<slug>/` |
 | 기술 블로그 | `blog/` | `/blog/`, `/posts/<slug>` |
 
 프로젝트 문구는 `portfolio/cases.mjs`에서, 블로그 글은 `blog/posts/`에서 관리합니다.
@@ -14,7 +14,7 @@
 ```sh
 portfolio_output="$(mktemp -d)"
 pages_output="$(mktemp -d)"
-(cd portfolio && npm run build -- "$portfolio_output")
+(cd portfolio && bun install --frozen-lockfile && bun run build "$portfolio_output")
 (cd blog && bun install --frozen-lockfile && bun run build)
 bash scripts/assemble-pages.sh blog/out "$portfolio_output" "$pages_output"
 ```

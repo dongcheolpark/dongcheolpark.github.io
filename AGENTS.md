@@ -9,7 +9,7 @@
 ## 프로젝트 구조
 
 - `portfolio/`와 `blog/`는 독립 앱이다. 각 앱의 디렉터리에서 빌드한다.
-- `portfolio/cases.mjs`에 포트폴리오 프로젝트 내용을 둔다. 포트폴리오 빌드는 `npm run build -- <출력 디렉터리>`로 실행한다.
+- `portfolio/cases.mjs`에 포트폴리오 프로젝트 내용을 둔다. 포트폴리오의 React 빌드는 `bun run build <출력 디렉터리>`로 실행한다.
 - Next.js App Router와 TypeScript를 사용하며, 정적 사이트로 내보낸다.
 - `blog/posts/*.mdx`: 글 원본. Contentlayer가 읽어 페이지 데이터를 생성한다.
 - `blog/contentlayer.config.ts`: 글 스키마, URL 생성, MDX 처리 설정.
