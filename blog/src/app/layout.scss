@@ -1,43 +1,51 @@
 @import './styles/variables.scss';
 
 .mainNav {
-  top: 0;
   position: sticky;
-  width: 100%;
-  height: 3rem;
-  display: inline-flex;
-  justify-content: center;
+  top: 0;
   margin-bottom: 10px;
-  border-bottom: 0.5px solid $secondaryGrayColor;
+  border-bottom: 1px solid $primaryGrayColor;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 
   .innerWrapper {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
-    width: 100%;
+    gap: 16px;
+    width: min(1200px, calc(100% - 40px));
+    min-height: 48px;
+    margin-inline: auto;
   }
 
   .logo {
-    color: $primaryColor;
-    padding: 5px;
-    font-size: 18px;
+    color: #46658f;
+    font-size: 1.125rem;
+    font-weight: 750;
+  }
 
-    &:hover {
-      border-radius: 5px;
-      box-shadow: 2px 4px 16px $secondaryGrayColor;
-      transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
+  nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(13px, 3vw, 32px);
+    color: #4b5563;
+    font-size: .875rem;
+    font-weight: 600;
+
+    a:hover {
+      color: #1d4ed8;
+      text-decoration: underline;
+      text-underline-offset: .25em;
+    }
+
+    @media (max-width: 720px) {
+      gap: 13px;
+      font-size: .78rem;
     }
   }
 
-  .githubLogo {
-    padding: 5px;
-    &:hover {
-      border-radius: 5px;
-      box-shadow: 2px 4px 16px $secondaryGrayColor;
-      transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
-    }
+  a:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 4px;
   }
 }
