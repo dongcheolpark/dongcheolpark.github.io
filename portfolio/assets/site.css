@@ -42,7 +42,7 @@ button { cursor: pointer; }
 nav, .footer > div { gap: clamp(13px, 3vw, 32px); font-size: .875rem; color: var(--muted); font-weight: 600; }
 nav a:hover, .footer a:hover, .blog-link a:hover, .back:hover { color: var(--accent); text-decoration: underline; text-underline-offset: .25em; }
 
-.hero { display: grid; gap: 25px; padding-block: 42px 36px; }
+.hero { padding-block: 42px 36px; }
 .eyebrow { color: var(--accent); font-weight: 760; font-size: .875rem; }
 .hero h1 { font-size: clamp(2.25rem, 5vw, 3rem); line-height: 1.14; letter-spacing: -.045em; margin: 8px 0 12px; }
 .intro { color: var(--muted); max-width: 530px; font-size: clamp(1rem, 1.6vw, 1.12rem); line-height: 1.8; }
@@ -51,20 +51,8 @@ nav a:hover, .footer a:hover, .blog-link a:hover, .back:hover { color: var(--acc
 .button.primary { background: var(--accent); color: white; border-color: var(--accent); }
 .button.primary:hover { background: #1e40af; }
 .button.secondary:hover { background: var(--paper); border-color: var(--accent); }
-.hero-panel {
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 13px 16px;
-}
-.panel-heading, .card-meta, .card-bottom, .section-head, .figure-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.panel-heading { color: var(--muted); font-size: .82rem; }
-.panel-heading span:last-child, .card-meta span:last-child, .hero-metrics dd { font-variant-numeric: tabular-nums; }
-.employer { font-size: 1.2rem; letter-spacing: -.025em; font-weight: 750; margin-top: 5px; }
-.employment { font-size: .85rem; color: var(--muted); }
-.hero-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
-.hero-metrics dt { color: var(--muted); font-size: .78rem; }
-.hero-metrics dd { font-weight: 760; font-size: 1.05rem; white-space: nowrap; }
-.hero-metrics dd span { color: var(--accent); padding-inline: 1px; }
+.card-meta, .card-bottom, .section-head, .figure-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.card-meta span:last-child { font-variant-numeric: tabular-nums; }
 
 .projects { scroll-margin-top: 24px; }
 .section-head { padding-bottom: 15px; }
@@ -92,17 +80,18 @@ nav a:hover, .footer a:hover, .blog-link a:hover, .back:hover { color: var(--acc
 
 .detail { max-width: 672px; padding-block: 36px 65px; }
 .back { display: inline-block; color: var(--accent); font-size: .875rem; font-weight: 720; }
-.detail-header { margin-block: 34px; padding-bottom: 29px; border-bottom: 1px solid var(--line); }
-.detail-header h1 { margin-block: 8px 13px; font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.18; letter-spacing: -.045em; }
-.detail-header > p:not(.eyebrow), .detail-section p { color: var(--muted); max-width: 69ch; }
-.detail-header .tags { margin-top: 14px; }
-.detail-section { margin-block: 32px; }
-.detail-section h2 { margin-bottom: 12px; letter-spacing: -.04em; font-size: 1.45rem; }
-.decisions { display: grid; gap: 15px; }
-.decisions > div { border-left: 2px solid #92a8d1; padding-left: 14px; }
-.decisions h3 { margin-bottom: 4px; font-size: 1rem; }
-.outcome { margin-bottom: 0; }
-.detail-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 16px; }
+.detail-header { margin-block: 38px 0; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.detail-header h1 { margin-block: 10px 14px; font-size: clamp(2.05rem, 5vw, 2.85rem); line-height: 1.18; letter-spacing: -.045em; }
+.article-meta { color: var(--muted); font-size: .9rem; }
+.article-meta span { margin-inline: 3px; }
+.detail-header .tags { margin-top: 12px; }
+.article-lead { margin-top: 28px; font-size: 1.09rem; }
+.article-lead, .detail-section > p { line-height: 1.85; }
+.article-lead p + p, .detail-section p + p { margin-top: 14px; }
+.detail-section { margin-top: 42px; }
+.detail-section h2 { margin-bottom: 12px; letter-spacing: -.035em; line-height: 1.3; font-size: clamp(1.35rem, 3.5vw, 1.65rem); }
+.detail-section > .figure { margin-top: 20px; }
+.detail-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 8px; margin-top: 16px; }
 .detail-metrics > div { background: var(--tint); padding: 13px; border-radius: 9px; }
 .detail-metrics dt { color: var(--muted); font-size: .82rem; }
 .detail-metrics dd { color: var(--accent); font-size: clamp(.95rem, 3.1vw, 1.4rem); font-weight: 800; }
