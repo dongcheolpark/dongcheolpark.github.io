@@ -77,25 +77,14 @@ export function HomePage() {
       path="/"
     >
       <section className="wrap hero" aria-labelledby="profile-title">
-        <div className="hero-copy">
-          <p className="eyebrow">소프트웨어 엔지니어</p>
-          <h1 id="profile-title">박동철</h1>
-          <p className="intro">
-            React와 Ruby on Rails로 에듀테크 서비스를 개발·운영했습니다. 인증, 상태 관리, 성능 개선에서 마주한 제약과 설계 판단을 소개합니다.
-          </p>
-          <div className="actions">
-            <a className="button primary" href="#work">프로젝트 보기 <Arrow>↓</Arrow></a>
-            <a className="button secondary" href={email}>이메일 <Arrow /></a>
-          </div>
-        </div>
-        <div className="hero-panel">
-          <div className="panel-heading"><span>경력</span><span>2023.01 – 2025.02</span></div>
-          <p className="employer">프라이빗노트</p>
-          <p className="employment">개발팀 · 산업기능요원</p>
-          <dl className="hero-metrics">
-            <div><dt>개발 서버 시작</dt><dd>60초 <span>→</span> 10초</dd></div>
-            <div><dt>결제 내역 쿼리</dt><dd>4초 <span>→</span> 0.1초</dd></div>
-          </dl>
+        <p className="eyebrow">소프트웨어 엔지니어</p>
+        <h1 id="profile-title">박동철</h1>
+        <p className="intro">
+          React와 Ruby on Rails로 에듀테크 서비스를 개발·운영했습니다. 인증, 상태 관리, 성능 개선에서 마주한 제약과 설계 판단을 소개합니다.
+        </p>
+        <div className="actions">
+          <a className="button primary" href="#work">프로젝트 보기 <Arrow>↓</Arrow></a>
+          <a className="button secondary" href={email}>이메일 <Arrow /></a>
         </div>
       </section>
       <section className="wrap projects" id="work" aria-labelledby="work-title">
@@ -162,8 +151,25 @@ const caseVisuals = {
   operations: OperationsDiagram,
 };
 
+function CaseSection({ section, feedbackScript }) {
+  const Visual = caseVisuals[section.visual];
+  return (
+    <section className="detail-section">
+      <h2>{section.title}</h2>
+      {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+      {Visual && <Visual script={feedbackScript} />}
+      {section.metrics && (
+        <dl className="detail-metrics">
+          {section.metrics.map(([label, value]) => (
+            <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
+          ))}
+        </dl>
+      )}
+    </section>
+  );
+}
+
 export function CasePage({ item, feedbackScript }) {
-  const Visual = caseVisuals[item.id];
   return (
     <Layout
       title={item.title + ' | 박동철'}
@@ -173,32 +179,17 @@ export function CasePage({ item, feedbackScript }) {
       <article className="wrap detail">
         <a className="back" href="/#work"><Arrow>←</Arrow> 프로젝트 목록</a>
         <header className="detail-header">
-          <p className="eyebrow">{item.category} · {item.period}</p>
+          <p className="eyebrow">{item.category}</p>
           <h1>{item.title}</h1>
-          <p>{item.summary}</p>
+          <p className="article-meta">박동철 <span aria-hidden="true">·</span> {item.period}</p>
           <Tags items={item.tags} />
         </header>
-        <section className="detail-section"><h2>문제와 제약</h2><p>{item.problem}</p></section>
-        <section className="detail-section">
-          <h2>설계 판단</h2>
-          <div className="decisions">
-            {item.decisions.map(([heading, body]) => (
-              <div key={heading}><h3>{heading}</h3><p>{body}</p></div>
-            ))}
-          </div>
-        </section>
-        {Visual && <Visual script={feedbackScript} />}
-        <section className="detail-section outcome">
-          <h2>결과</h2>
-          <p>{item.outcome}</p>
-          {item.metrics && (
-            <dl className="detail-metrics">
-              {item.metrics.map(([label, value]) => (
-                <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
-              ))}
-            </dl>
-          )}
-        </section>
+        <div className="article-lead">
+          {item.lead.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+        </div>
+        {item.sections.map((section) => (
+          <CaseSection key={section.title} section={section} feedbackScript={feedbackScript} />
+        ))}
       </article>
     </Layout>
   );
